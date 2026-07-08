@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guess the Number! </title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Floating background shapes -->
+  <div class="bg-shapes">
+    <div class="shape s1">⭐</div>
+    <div class="shape s2">🌈</div>
+    <div class="shape s3">🎈</div>
+    <div class="shape s4">🌟</div>
+    <div class="shape s5">🎀</div>
+    <div class="shape s6">💎</div>
+    <div class="shape s7">🦋</div>
+    <div class="shape s8">🍭</div>
+    <div class="shape s9">🎠</div>
+    <div class="shape s10">🌸</div>
+  </div>
+
+  <div class="wrapper">
+
+    <!-- Title -->
+    <div class="title-box">
+      <h1> Guess the Number! </h1>
+      <p class="subtitle">Can you crack the code?</p>
+    </div>
+
+    <!-- Level Select Screen -->
+    <div id="levelScreen" class="screen active">
+      <h2 class="screen-title">Choose Your Level!</h2>
+      <div class="level-cards">
+        <button class="level-btn easy" onclick="startGame('easy')">
+          <span class="level-icon"></span>
+          <span class="level-name">Easy</span>
+          <span class="level-range">1 – 10</span>
+        </button>
+        <button class="level-btn normal" onclick="startGame('normal')">
+          <span class="level-icon"></span>
+          <span class="level-name">Normal</span>
+          <span class="level-range">1 – 50</span>
+        </button>
+        <button class="level-btn hard" onclick="startGame('hard')">
+          <span class="level-icon"></span>
+          <span class="level-name">Hard</span>
+          <span class="level-range">1 – 100</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen">
+      <div class="game-header">
+        <div class="badge" id="levelBadge">Easy</div>
+        <div class="lives-display" id="livesDisplay">
+          <span>❤️</span><span>❤️</span><span>❤️</span>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <p class="game-prompt" id="gamePrompt">Pick a number between <strong id="rangeLabel">1 and 10</strong>!</p>
+
+        <div class="input-row">
+          <input type="number" id="guessInput" placeholder="?" min="1" />
+          <button class="guess-btn" id="guessBtn" onclick="checkGuess()">GO! </button>
+        </div>
+
+        <div id="feedback" class="feedback hidden"></div>
+        <div id="attemptLog" class="attempt-log"></div>
+      </div>
+
+      <button class="restart-btn" onclick="restartGame()">🔄 Restart</button>
+    </div>
+
+    <!-- Win Screen -->
+    <div id="winScreen" class="screen">
+      <div class="result-card win-card">
+        <div class="result-emoji">🏆</div>
+        <h2 class="result-title">You Got It!</h2>
+        <p class="result-msg" id="winMsg">Amazing! You guessed it in 3 tries!</p>
+        <div class="star-row">⭐⭐⭐</div>
+        <button class="restart-btn big" onclick="restartGame()">🔄 Play Again!</button>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="overScreen" class="screen">
+      <div class="result-card over-card">
+        <div class="result-emoji">💀</div>
+        <h2 class="result-title">Game Over!</h2>
+        <p class="result-msg" id="overMsg">The number was <strong id="revealNum">?</strong>. Better luck next time!</p>
+        <button class="restart-btn big" onclick="restartGame()">🔄 Try Again!</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
